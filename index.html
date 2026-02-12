@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liam Demian | Filmmaker</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+    font-family: 'ImpactGeoffrey';
+    src: url('./fonts/Impact-GeoffreyLee.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #000;
+    color: #e0e0e0;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    padding: 20px 40px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    font-family: 'ImpactGeoffrey', sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color .3s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+    min-height: 100vh;
+    padding: 120px 40px 80px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Portfolio sin padding superior (fullscreen correcto) */
+#portfolio {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+}
+
+/* ---------- HOME ---------- */
+#home {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transform: translateY(120vh);
+    animation: bgUp 2.4s ease-out forwards;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.home-content {
+    position: relative;
+    z-index: 2;
+}
+
+#home h1 {
+    font-family: 'ImpactGeoffrey', sans-serif;
+    text-transform: uppercase;
+    font-size: 4em;
+    color: #fff;
+}
+
+#home p {
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.btn-wrap {
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 42px;
+
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: #1a1a1a;
+}
+
+/* ---------- TITLES ---------- */
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ---------- PORTFOLIO ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+}
+
+.project {
+    background: #111;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project div {
+    padding: 15px;
+}
+
+/* ---------- TEXT BLOCK ---------- */
+.center-text {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* ---------- LISTS ---------- */
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.list div {
+    background: #111;
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* ---------- CONTACT ---------- */
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #111;
+    border: none;
+    color: #fff;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #222;
+    border: none;
+    color: #fff;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+}
+.logo-header {
+    height: 20px;
+}
+
+.logo-hero {
+    width: 400px;
+    max-width: 90%;
+}
+
+
+/* === ANIMACIONES DE CARGA === */
+
+/* Fade simple */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+/* Subir + fade */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease forwards;
+}
+
+/* Izquierda a derecha */
+.slide-right {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideRight 1.2s ease forwards;
+}
+
+/* Fondo imagen */
+
+/* Delays */
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+/* Keyframes */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bgUp {
+    from {
+        transform: translateY(120vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Hover botón */
+
+.btn:hover {
+    transform: scale(1.1);
+    background: #1a1a1a;
+}
+
+.hero-fade {
+    opacity: 0;
+    animation: heroFade 2.4s ease forwards;
+}
+
+@keyframes heroFade {
+    to {
+        opacity: 1;
+    }
+}
+.hero-text-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroTextUp 2.4s ease forwards;
+}
+
+@keyframes heroTextUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ============================= */
+/* PORTFOLIO HORIZONTAL FULLSCREEN */
+/* ============================= */
+
+.portfolio-project {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.portfolio-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+
+.portfolio-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 80px;
+    color: #fff;
+}
+
+.portfolio-left h3 {
+    font-family: 'ImpactGeoffrey', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.portfolio-left span {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+.portfolio-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+/* ===== ELIMINAR CUADRADO DE FOCO EN LINKS ===== */
+a:focus,
+a:focus-visible {
+    outline: none !important;
+}
+
+
+/* Quitar foco visual (cuadradito) de links de portfolio */
+.portfolio-link:focus,
+.portfolio-link:focus-visible {
+    outline: none;
+}
+
+.portfolio-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.portfolio-link:hover::after {
+    width: 100%;
+}
+
+/* ============================= */
+/* PORTFOLIO VERTICAL (3 REELS) */
+/* ============================= */
+
+.portfolio-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    height: 100vh;
+}
+
+.vertical-project {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.vertical-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.vertical-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+
+.vertical-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 40px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.vertical-content h3 {
+    font-family: 'ImpactGeoffrey', sans-serif;
+    font-size: 2.2em;
+    margin-bottom: 6px;
+}
+
+.vertical-content span {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+/* Responsive: mobile */
+@media (max-width: 900px) {
+    .portfolio-vertical {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .vertical-project {
+        height: 100vh;
+    }
+}
+
+
+/* ============================= */
+/* MODAL VIDEO */
+/* ============================= */
+
+/* Quitar borde de foco (cuadradito) en videos del modal */
+.modal video:focus {
+    outline: none;
+}
+
+.modal-close:focus,
+.modal-close:focus-visible {
+    outline: none !important;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    cursor: pointer;
+}
+
+.modal-content {
+    cursor: default;
+}
+
+.modal:target {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.modal-content video {
+    width: 100%;
+    height: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* ============================= */
+/* MODAL VIDEO VERTICAL (REELS) */
+/* ============================= */
+
+.vertical-modal {
+    width: auto;
+    height: 80vh;
+    max-width: 420px;
+}
+
+.vertical-modal video {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+
+/* ============================= */
+/* PORTFOLIO VERTICAL */
+/* ============================= */
+
+.portfolio-vertical {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.vertical-project {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+.vertical-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vertical-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+
+.vertical-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding-bottom: 60px;
+    color: #fff;
+    text-align: center;
+}
+
+.vertical-content h3 {
+    font-family: 'ImpactGeoffrey', sans-serif;
+    font-size: 2.4em;
+    margin-bottom: 6px;
+}
+
+.vertical-content span {
+    font-size: 1em;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 16px;
+}
+
+/* =========================
+   MOBILE FIX (CELULAR)
+   ========================= */
+
+@media (max-width: 768px) {
+
+    /* ===== VERTICALES ===== */
+
+    .portfolio-vertical {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .vertical-project {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+    }
+
+    .vertical-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ===== HORIZONTALES (FEED) ===== */
+
+    .portfolio-project.horizontal {
+        height: 38vh;
+        min-height: 260px;
+    }
+
+    .portfolio-project.horizontal .portfolio-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ===== TEXTO ===== */
+
+    .portfolio-content {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .portfolio-left h3 {
+        font-size: 1.8em;
+    }
+
+    .portfolio-left span {
+        font-size: 0.85em;
+    }
+}
+
+
+/* ===== ELIMINAR CUADRADITO DE FOCO / TAP ===== */
+
+:focus,
+:focus-visible {
+    outline: none !important;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ===== CONTACTO INSTAGRAM ===== */
+
+.contact-instagram {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.contact-instagram span {
+    display: block;
+    margin-bottom: 12px;
+    opacity: 0.6;
+    letter-spacing: 2px;
+}
+
+.contact-instagram p {
+    margin-bottom: 16px;
+    font-size: 1em;
+}
+
+.instagram-btn {
+    display: inline-block;
+    padding: 14px 46px;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.instagram-btn:hover {
+    transform: scale(1.1);
+    background: #1a1a1a;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/Liam-Demian1.png" alt="Liam Demian" class="logo-header slide-right">
+    <nav class="fade-up">
+        <a href="#home">Inicio</a>
+        <a href="#portfolio">Portafolio</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+</header>
+
+<section id="home" class="bg-anim">
+    
+    <video class="hero-video" muted loop playsinline preload="metadata" tabindex="-1">
+    <source src="images/hero-video.mp4" type="video/mp4">
+</video>
+
+    <div class="home-content">
+        <img src="images/Liam-Demian2.png" alt="Liam Demian" class="logo-hero hero-fade">
+
+        <p class="fade-up delay-2">
+            Filmmaker | Director | Editor | Buenos Aires · Dando forma visual a ideas que necesitan ser contadas.
+        </p>
+
+        <div class="btn-wrap fade-up delay-3">
+    <a href="#portfolio" class="btn">VER TRABAJOS</a>
+</div>
+    </div>
+
+</section>
+
+<section id="portfolio">
+
+    <div class="portfolio-project horizontal" id="trisine-loop">
+
+        <video class="portfolio-video" muted loop playsinline preload="metadata">
+    <source src="images/trisineloop.mp4" type="video/mp4">
+</video>
+
+        <div class="portfolio-overlay"></div>
+
+        <div class="portfolio-content">
+            <div class="portfolio-left">
+                <h3>TRISINE</h3>
+                <span>COMERCIAL</span>
+            </div>
+
+            <div class="portfolio-right">
+               <a href="#trisine" class="portfolio-link">VER PROYECTO</a>
+            </div>
+        </div>
+
+    </div>
+
+<div class="portfolio-project horizontal" id="berghain-loop">
+
+        <video class="portfolio-video" muted loop playsinline preload="metadata" id="berghainLoop">
+    <source src="images/berghainloop.mp4" type="video/mp4">
+</video>
+
+        <div class="portfolio-overlay"></div>
+
+        <div class="portfolio-content">
+            <div class="portfolio-left">
+                <h3>BERGHAIN</h3>
+                <span>DANCE VIDEO</span>
+            </div>
+
+            <div class="portfolio-right">
+               <a href="#berghain" class="portfolio-link">VER PROYECTO</a>
+            </div>
+        </div>
+
+</div>
+
+
+
+<!-- ===== PORTFOLIO VERTICAL (3 REELS) ===== -->
+
+<div class="portfolio-vertical">
+
+    <!-- WORK -->
+    <div class="vertical-project" id="work-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="workLoop">
+            <source src="images/workloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>WORK</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#work" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- LONDON -->
+    <div class="vertical-project" id="london-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="londonLoop">
+            <source src="images/londonloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>LONDON</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#london" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- CHOPA -->
+    <div class="vertical-project" id="chopa-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="chopaLoop">
+            <source src="images/chopaloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>CHOPA</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#chopa" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="syntra-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="syntraLoop">
+        <source src="images/syntraloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>SYNTRA</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#syntra" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== PORTFOLIO VERTICAL (RALPH / 47 / BANANA) ===== -->
+
+<div class="portfolio-vertical">
+
+    <!-- RALPH LAUREN -->
+    <div class="vertical-project" id="ralphlauren-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="ralphlaurenLoop">
+            <source src="images/ralphlaurenloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>RALPH LAUREN</h3>
+            <span>FASHION FILM</span>
+            <a href="#ralphlauren" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- 47 -->
+    <div class="vertical-project" id="47-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="47Loop">
+            <source src="images/47loop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>47</h3>
+            <span>COMERCIAL</span>
+            <a href="#47" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- BANANA BLONDE -->
+    <div class="vertical-project" id="bananablonde-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="bananablondeLoop">
+            <source src="images/bananablondeloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>BANANA BLONDE</h3>
+            <span>FASHION FILM</span>
+            <a href="#bananablonde" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="vuelveami-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="vuelveamiLoop">
+        <source src="images/vuelveamiloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>VUELVE A MÍ</h3>
+            <span>VIDEOCLIP</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#vuelveami" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="southside-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="southsideLoop">
+        <source src="images/southsideloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>SOUTHSIDE</h3>
+            <span>VIDEOCLIP</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#southside" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="tequieroigual-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="tequieroigualLoop">
+        <source src="images/tequieroigual.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>TE QUIERO IGUAL</h3>
+            <span>VIDEOCLIP</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#tequieroigual" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== PORTFOLIO VERTICAL (INVASORES / LA CASA / DANI) ===== -->
+
+<div class="portfolio-vertical">
+
+    <!-- INVASORES -->
+    <div class="vertical-project" id="invasores-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="invasoresLoop">
+            <source src="images/invasoresloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>INVASORES</h3>
+            <span>MÚSICA</span>
+            <a href="#invasores" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- LA CASA -->
+    <div class="vertical-project" id="lacasa-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="lacasaLoop">
+            <source src="images/lacasaloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>LA CASA</h3>
+            <span>MÚSICA</span>
+            <a href="#lacasa" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- DANI -->
+    <div class="vertical-project" id="dani-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="daniLoop">
+            <source src="images/daniloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>DANI</h3>
+            <span>MÚSICA</span>
+            <a href="#dani" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="portfolio-project horizontal" id="invasión-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="invasiónLoop">
+        <source src="images/invasiónloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>INVASIÓN</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#invasión" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="metnic-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="metnicLoop">
+        <source src="images/metnicloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>METNIC</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#metnic" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="chaussure-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="chaussureLoop">
+        <source src="images/chaussureloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>CHAUSSURE</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#chaussure" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="identidadfracturada-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="identidadfracturadaLoop">
+        <source src="images/identidadfracturadaloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>IDENTIDAD FRACTURADA</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#identidadfracturada" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="mutante-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="mutanteLoop">
+        <source src="images/mutanteloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>MUTANTE</h3>
+            <span>FASHION FILM</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#mutante" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== PORTFOLIO VERTICAL (APARATO / ME AGAINST / GUESS) ===== -->
+
+<div class="portfolio-vertical">
+
+    <!-- APARATO -->
+    <div class="vertical-project" id="aparato-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="aparatoLoop">
+            <source src="images/aparatoloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>APARATO</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#aparato" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- ME AGAINST -->
+    <div class="vertical-project" id="meagainst-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="meagainstLoop">
+            <source src="images/meagainstloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>ME AGAINST</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#meagainst" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- GUESS -->
+    <div class="vertical-project" id="guess-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="guessLoop">
+            <source src="images/guessloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>GUESS</h3>
+            <span>DANCE VIDEO</span>
+            <a href="#guess" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="quevashacerhoy-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="quevashacerhoyLoop">
+        <source src="images/quevashacerhoyloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>QUE VAS HACER HOY</h3>
+            <span>DANCE VIDEO</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#quevashacerhoy" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="khecalor-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="khecalorLoop">
+        <source src="images/khecalorloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>KHE CALOR</h3>
+            <span>DANCE VIDEO</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#khecalor" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== PORTFOLIO VERTICAL (POCIMA / MUESTRA / PSICOSIS) ===== -->
+
+<div class="portfolio-vertical">
+
+    <!-- POCIMA -->
+    <div class="vertical-project" id="pocima-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="pocimaLoop">
+            <source src="images/pocimaloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>POCIMA</h3>
+            <span>BACK</span>
+            <a href="#pocima" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- MUESTRA -->
+    <div class="vertical-project" id="muestra-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="muestraLoop">
+            <source src="images/muestradedanzaloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>MUESTRA</h3>
+            <span>BACK</span>
+            <a href="#muestra" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+    <!-- PSICOSIS -->
+    <div class="vertical-project" id="psicosis-loop">
+        <video class="vertical-video" muted loop playsinline preload="metadata" id="psicosisLoop">
+            <source src="images/psicosisloop.mp4" type="video/mp4">
+        </video>
+        <div class="vertical-overlay"></div>
+        <div class="vertical-content">
+            <h3>PSICOSIS</h3>
+            <span>BACK</span>
+            <a href="#psicosis" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="portfolio-project horizontal" id="muertetodaslastardes-loop">
+
+    <video class="portfolio-video" muted loop playsinline preload="metadata" id="muertetodaslastardesLoop">
+        <source src="images/muerteloop.mp4" type="video/mp4">
+    </video>
+
+    <div class="portfolio-overlay"></div>
+
+    <div class="portfolio-content">
+        <div class="portfolio-left">
+            <h3>MUERTE TODAS LAS TARDES</h3>
+            <span>BACK</span>
+        </div>
+
+        <div class="portfolio-right">
+           <a href="#muertetodaslastardes" class="portfolio-link">VER PROYECTO</a>
+        </div>
+    </div>
+
+</div>
+
+
+</section>
+
+<section id="about">
+    <h2>Sobre mí</h2>
+    <div class="center-text">
+        <p>
+    <strong>Soy Liam Demian, filmmaker, director y editor con base en Buenos Aires, Argentina.</strong>
+    <br><br>
+    Me formé en el Instituto de Artes Cinematográficas (IDAC) de Avellaneda, donde entendí que el cine
+    no es solo contar historias, sino una forma de pensar imágenes y convertir ideas en algo tangible.
+    <br><br>
+    Trabajo la luz, la composición, el ritmo y el montaje como herramientas narrativas. Me interesa crear
+    atmósferas que transmitan emoción, tensión y sensibilidad, y que conecten más allá de lo literal.
+    <br><br>
+    Disfruto tanto los proyectos narrativos como los experimentales: fashion films, videoclips,
+    piezas coreográficas o cualquier formato que permita explorar lo visual y lo emocional.
+    Cada proyecto es una oportunidad para aprender, resolver desafíos creativos y colaborar con
+    personas que compartan la misma pasión.
+    <br><br>
+    Si tenés una idea —un corto, un video, un concepto visual o simplemente ganas de hablar de cine—,
+    escribime. <strong>Lo que hoy está en tu cabeza, podemos llevarlo a la pantalla.</strong>
+</p>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contacto</h2>
+    <form action="https://formspree.io/f/xpqlbelo" method="POST">
+
+    <input 
+        type="text" 
+        name="nombre" 
+        placeholder="Nombre" 
+        required
+    >
+
+    <input 
+        type="email" 
+        name="email" 
+        placeholder="Email" 
+        required
+    >
+
+    <textarea 
+        name="mensaje" 
+        rows="5" 
+        placeholder="Mensaje"
+        required
+    ></textarea>
+
+    <button type="submit">Enviar</button>
+
+</form>
+
+<div class="contact-instagram">
+    <span>— o —</span>
+    <p>Hablame por Instagram</p>
+    <a 
+        href="https://www.instagram.com/liamdemian/" 
+        target="_blank" 
+        rel="noopener"
+        class="instagram-btn"
+    >
+        INSTAGRAM
+    </a>
+</div>
+
+
+</section>
+
+<footer>
+    © 2026 Liam Demian
+</footer>
+<script>
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 50);
+});
+</script>
+
+function closeTrisine() {
+    const video = document.getElementById('trisineVideo');
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+
+    // volver al loop de TRISINE
+    window.location.hash = '#trisine-loop';
+}
+</script>
+
+<script>
+function closeBerghain() {
+    const video = document.getElementById('berghainVideo');
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+
+    // volver al loop de BERGHAIN
+    window.location.hash = '#berghain-loop';
+}
+
+function closeSyntra() {
+    const video = document.getElementById('syntraVideo');
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+    window.location.hash = '#syntra-loop';
+}
+
+
+</script>
+
+
+<div id="trisine" class="modal" onclick="closeTrisine()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+       <video
+    id="trisineVideo"
+    controls
+    playsinline>
+            <source src="images/trisine.mp4" type="video/mp4">
+        </video>
+        <a href="#trisine-loop" class="modal-close" onclick="closeTrisine()">✕</a>
+    </div>
+</div>
+
+<div id="berghain" class="modal" onclick="closeBerghain()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="berghainVideo" controls playsinline>
+            <source src="images/berghain.mp4" type="video/mp4">
+        </video>
+        <a href="#berghain-loop" class="modal-close" onclick="closeBerghain()">✕</a>
+    </div>
+</div>
+
+<div id="syntra" class="modal" onclick="closeSyntra()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+       <video id="syntraVideo" controls playsinline>
+
+            <source src="images/syntra.mp4" type="video/mp4">
+        </video>
+        <a href="#syntra-loop" class="modal-close" onclick="closeSyntra()">✕</a>
+    </div>
+</div>
+
+
+<div id="work" class="modal" onclick="closeWork()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="workVideo" controls playsinline>
+
+            <source src="images/work.mp4" type="video/mp4">
+        </video>
+        <a href="#work-loop" class="modal-close" onclick="closeWork()">✕</a>
+    </div>
+</div>
+
+<div id="london" class="modal" onclick="closeLondon()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="londonVideo" controls playsinline>
+            <source src="images/london.mp4" type="video/mp4">
+        </video>
+        <a href="#london-loop" class="modal-close" onclick="closeLondon()">✕</a>
+    </div>
+</div>
+
+<div id="chopa" class="modal" onclick="closeChopa()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="chopaVideo" controls playsinline>
+
+            <source src="images/chopa.mp4" type="video/mp4">
+        </video>
+        <a href="#chopa-loop" class="modal-close" onclick="closeChopa()">✕</a>
+    </div>
+</div>
+
+<div id="ralphlauren" class="modal" onclick="closeRalphLauren()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="ralphlaurenVideo" controls playsinline>
+            <source src="images/ralphlauren.mp4" type="video/mp4">
+        </video>
+        <a href="#ralphlauren-loop" class="modal-close" onclick="closeRalphLauren()">✕</a>
+    </div>
+</div>
+
+<div id="47" class="modal" onclick="close47()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="47Video" controls playsinline>
+            <source src="images/47.mp4" type="video/mp4">
+        </video>
+        <a href="#47-loop" class="modal-close" onclick="close47()">✕</a>
+    </div>
+</div>
+
+<div id="bananablonde" class="modal" onclick="closeBananaBlonde()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="bananablondeVideo" controls playsinline>
+            <source src="images/bananablonde.mp4" type="video/mp4">
+        </video>
+        <a href="#bananablonde-loop" class="modal-close" onclick="closeBananaBlonde()">✕</a>
+    </div>
+</div>
+
+<div id="vuelveami" class="modal" onclick="closeVuelveAMi()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="vuelveamiVideo" controls playsinline>
+            <source src="images/vuelveami.mp4" type="video/mp4">
+        </video>
+        <a href="#vuelveami-loop" class="modal-close" onclick="closeVuelveAMi()">✕</a>
+    </div>
+</div>
+
+<div id="southside" class="modal" onclick="closeSouthside()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="southsideVideo" controls playsinline>
+            <source src="images/southside.mp4" type="video/mp4">
+        </video>
+        <a href="#southside-loop" class="modal-close" onclick="closeSouthside()">✕</a>
+    </div>
+</div>
+
+<div id="tequieroigual" class="modal" onclick="closeTeQuieroIgual()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="tequieroigualVideo" controls playsinline>
+            <source src="images/tequieroigual.mp4" type="video/mp4">
+        </video>
+        <a href="#tequieroigual-loop" class="modal-close" onclick="closeTeQuieroIgual()">✕</a>
+    </div>
+</div>
+
+<div id="invasores" class="modal" onclick="closeInvasores()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="invasoresVideo" controls playsinline>
+            <source src="images/invasores.mp4" type="video/mp4">
+        </video>
+        <a href="#invasores-loop" class="modal-close" onclick="closeInvasores()">✕</a>
+    </div>
+</div>
+
+<div id="lacasa" class="modal" onclick="closeLaCasa()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="lacasaVideo" controls playsinline>
+            <source src="images/lacasa.mp4" type="video/mp4">
+        </video>
+        <a href="#lacasa-loop" class="modal-close" onclick="closeLaCasa()">✕</a>
+    </div>
+</div>
+
+<div id="dani" class="modal" onclick="closeDani()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="daniVideo" controls playsinline>
+            <source src="images/dani.mp4" type="video/mp4">
+        </video>
+        <a href="#dani-loop" class="modal-close" onclick="closeDani()">✕</a>
+    </div>
+</div>
+
+<div id="invasión" class="modal" onclick="closeInvasión()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="invasiónVideo" controls playsinline>
+            <source src="images/invasión.mp4" type="video/mp4">
+        </video>
+        <a href="#invasión-loop" class="modal-close" onclick="closeInvasión()">✕</a>
+    </div>
+</div>
+
+<div id="metnic" class="modal" onclick="closeMetnic()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="metnicVideo" controls playsinline>
+            <source src="images/metnic.mp4" type="video/mp4">
+        </video>
+        <a href="#metnic-loop" class="modal-close" onclick="closeMetnic()">✕</a>
+    </div>
+</div>
+
+<div id="chaussure" class="modal" onclick="closeChaussure()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="chaussureVideo" controls playsinline>
+            <source src="images/chaussure.mp4" type="video/mp4">
+        </video>
+        <a href="#chaussure-loop" class="modal-close" onclick="closeChaussure()">✕</a>
+    </div>
+</div>
+
+<div id="identidadfracturada" class="modal" onclick="closeIdentidadFracturada()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="identidadfracturadaVideo" controls playsinline>
+            <source src="images/identidadfracturada.mp4" type="video/mp4">
+        </video>
+        <a href="#identidadfracturada-loop" class="modal-close" onclick="closeIdentidadFracturada()">✕</a>
+    </div>
+</div>
+
+<div id="mutante" class="modal" onclick="closeMutante()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="mutanteVideo" controls playsinline>
+            <source src="images/mutante.mp4" type="video/mp4">
+        </video>
+        <a href="#mutante-loop" class="modal-close" onclick="closeMutante()">✕</a>
+    </div>
+</div>
+
+<div id="aparato" class="modal" onclick="closeAparato()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="aparatoVideo" controls playsinline>
+            <source src="images/aparato.mp4" type="video/mp4">
+        </video>
+        <a href="#aparato-loop" class="modal-close" onclick="closeAparato()">✕</a>
+    </div>
+</div>
+
+<div id="meagainst" class="modal" onclick="closeMeAgainst()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="meagainstVideo" controls playsinline>
+            <source src="images/meagainst.mp4" type="video/mp4">
+        </video>
+        <a href="#meagainst-loop" class="modal-close" onclick="closeMeAgainst()">✕</a>
+    </div>
+</div>
+
+<div id="guess" class="modal" onclick="closeGuess()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="guessVideo" controls playsinline>
+            <source src="images/guess.mp4" type="video/mp4">
+        </video>
+        <a href="#guess-loop" class="modal-close" onclick="closeGuess()">✕</a>
+    </div>
+</div>
+
+<div id="quevashacerhoy" class="modal" onclick="closeQueVasAHacerHoy()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="quevashacerhoyVideo" controls playsinline>
+            <source src="images/quevashacerhoy.mp4" type="video/mp4">
+        </video>
+        <a href="#quevashacerhoy-loop" class="modal-close" onclick="closeQueVasAHacerHoy()">✕</a>
+    </div>
+</div>
+
+<div id="khecalor" class="modal" onclick="closeKheCalor()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="khecalorVideo" controls playsinline>
+            <source src="images/khecalor.mp4" type="video/mp4">
+        </video>
+        <a href="#khecalor-loop" class="modal-close" onclick="closeKheCalor()">✕</a>
+    </div>
+</div>
+
+<div id="pocima" class="modal" onclick="closePocima()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="pocimaVideo" controls playsinline>
+            <source src="images/pocima.mp4" type="video/mp4">
+        </video>
+        <a href="#pocima-loop" class="modal-close" onclick="closePocima()">✕</a>
+    </div>
+</div>
+
+<div id="muestra" class="modal" onclick="closeMuestra()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="muestraVideo" controls playsinline>
+            <source src="images/muestradedanza.mp4" type="video/mp4">
+        </video>
+        <a href="#muestra-loop" class="modal-close" onclick="closeMuestra()">✕</a>
+    </div>
+</div>
+
+<div id="psicosis" class="modal" onclick="closePsicosis()">
+    <div class="modal-content vertical-modal" onclick="event.stopPropagation()">
+        <video id="psicosisVideo" controls playsinline>
+            <source src="images/psicosis.mp4" type="video/mp4">
+        </video>
+        <a href="#psicosis-loop" class="modal-close" onclick="closePsicosis()">✕</a>
+    </div>
+</div>
+
+<div id="muertetodaslastardes" class="modal" onclick="closeMuerteTodasLasTardes()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <video id="muertetodaslastardesVideo" controls playsinline>
+            <source src="images/muerte.mp4" type="video/mp4">
+        </video>
+        <a href="#muertetodaslastardes-loop" class="modal-close" onclick="closeMuerteTodasLasTardes()">✕</a>
+    </div>
+</div>
+
+
+<script>
+const berghainLoop = document.getElementById('berghainLoop');
+
+if (berghainLoop) {
+    berghainLoop.addEventListener('timeupdate', () => {
+        if (berghainLoop.currentTime >= 6) {
+            berghainLoop.currentTime = 0;
+            berghainLoop.play();
+        }
+    });
+}
+</script>
+
+<script>
+const syntraLoop = document.getElementById('syntraLoop');
+
+if (syntraLoop) {
+    syntraLoop.addEventListener('timeupdate', () => {
+        if (syntraLoop.currentTime >= 10) {
+            syntraLoop.currentTime = 0;
+            syntraLoop.play();
+        }
+    });
+}
+</script>
+
+
+<script>
+const verticalLoops = [
+    document.getElementById('workLoop'),
+    document.getElementById('londonLoop'),
+    document.getElementById('chopaLoop')
+];
+
+verticalLoops.forEach(video => {
+    if (!video) return;
+
+    video.addEventListener('timeupdate', () => {
+        if (video.currentTime >= 10) {
+            video.currentTime = 0;
+            video.play();
+        }
+    });
+});
+</script>
+
+<script>
+// ===== LOOPS VERTICALES EXTRA =====
+
+// RALPH LAUREN (0s → 10s)
+const ralphLoop = document.getElementById('ralphlaurenLoop');
+if (ralphLoop) {
+    ralphLoop.addEventListener('timeupdate', () => {
+        if (ralphLoop.currentTime >= 10) {
+            ralphLoop.currentTime = 0;
+            ralphLoop.play();
+        }
+    });
+}
+
+// 47 (36s → 46s)
+const loop47 = document.getElementById('47Loop');
+if (loop47) {
+    const start47 = 36;
+    const end47 = 46;
+
+    loop47.addEventListener('loadedmetadata', () => {
+        loop47.currentTime = start47;
+    });
+
+    loop47.addEventListener('timeupdate', () => {
+        if (loop47.currentTime >= end47) {
+            loop47.currentTime = start47;
+            loop47.play();
+        }
+    });
+}
+
+// BANANA BLONDE (0s → 10s)
+const bananaLoop = document.getElementById('bananablondeLoop');
+if (bananaLoop) {
+    bananaLoop.addEventListener('timeupdate', () => {
+        if (bananaLoop.currentTime >= 10) {
+            bananaLoop.currentTime = 0;
+            bananaLoop.play();
+        }
+    });
+}
+</script>
+
+
+<script>
+// VUELVE A MÍ (0:33 → 0:43)
+const vuelveAMiLoop = document.getElementById('vuelveamiLoop');
+
+if (vuelveAMiLoop) {
+    const startVuelve = 33;
+    const endVuelve = 43;
+
+    vuelveAMiLoop.addEventListener('loadedmetadata', () => {
+        vuelveAMiLoop.currentTime = startVuelve;
+    });
+
+    vuelveAMiLoop.addEventListener('timeupdate', () => {
+        if (vuelveAMiLoop.currentTime >= endVuelve) {
+            vuelveAMiLoop.currentTime = startVuelve;
+            vuelveAMiLoop.play();
+        }
+    });
+}
+
+// SOUTHSIDE (0:25 → 0:40)
+const southsideLoop = document.getElementById('southsideLoop');
+
+if (southsideLoop) {
+    const startSouth = 25;
+    const endSouth = 40;
+
+    southsideLoop.addEventListener('loadedmetadata', () => {
+        southsideLoop.currentTime = startSouth;
+    });
+
+    southsideLoop.addEventListener('timeupdate', () => {
+        if (southsideLoop.currentTime >= endSouth) {
+            southsideLoop.currentTime = startSouth;
+            southsideLoop.play();
+        }
+    });
+}
+
+// TE QUIERO IGUAL (1:11 → 1:21)
+const teQuieroIgualLoop = document.getElementById('tequieroigualLoop');
+
+if (teQuieroIgualLoop) {
+    const startTQI = 71; // 1:11
+    const endTQI = 81;   // 1:21
+
+    teQuieroIgualLoop.addEventListener('loadedmetadata', () => {
+        teQuieroIgualLoop.currentTime = startTQI;
+    });
+
+    teQuieroIgualLoop.addEventListener('timeupdate', () => {
+        if (teQuieroIgualLoop.currentTime >= endTQI) {
+            teQuieroIgualLoop.currentTime = startTQI;
+            teQuieroIgualLoop.play();
+        }
+    });
+}
+
+// INVASORES (0s → 10s)
+const invasoresLoop = document.getElementById('invasoresLoop');
+if (invasoresLoop) {
+    invasoresLoop.addEventListener('timeupdate', () => {
+        if (invasoresLoop.currentTime >= 10) {
+            invasoresLoop.currentTime = 0;
+            invasoresLoop.play();
+        }
+    });
+}
+
+// LA CASA (0s → 10s)
+const lacasaLoop = document.getElementById('lacasaLoop');
+if (lacasaLoop) {
+    lacasaLoop.addEventListener('timeupdate', () => {
+        if (lacasaLoop.currentTime >= 10) {
+            lacasaLoop.currentTime = 0;
+            lacasaLoop.play();
+        }
+    });
+}
+
+// DANI (0s → 10s)
+const daniLoop = document.getElementById('daniLoop');
+if (daniLoop) {
+    daniLoop.addEventListener('timeupdate', () => {
+        if (daniLoop.currentTime >= 10) {
+            daniLoop.currentTime = 0;
+            daniLoop.play();
+        }
+    });
+}
+
+// INVASIÓN (0s → 10s)
+const invasionLoop = document.getElementById('invasionLoop');
+
+if (invasionLoop) {
+    invasionLoop.addEventListener('timeupdate', () => {
+        if (invasionLoop.currentTime >= 10) {
+            invasionLoop.currentTime = 0;
+            invasionLoop.play();
+        }
+    });
+}
+
+// METNIC (0:09 → 0:22)
+const metnicLoop = document.getElementById('metnicLoop');
+
+if (metnicLoop) {
+    const startMetnic = 9;
+    const endMetnic = 22;
+
+    metnicLoop.addEventListener('loadedmetadata', () => {
+        metnicLoop.currentTime = startMetnic;
+    });
+
+    metnicLoop.addEventListener('timeupdate', () => {
+        if (metnicLoop.currentTime >= endMetnic) {
+            metnicLoop.currentTime = startMetnic;
+            metnicLoop.play();
+        }
+    });
+}
+
+// CHAUSSURE (0s → 10s)
+const chaussureLoop = document.getElementById('chaussureLoop');
+
+if (chaussureLoop) {
+    chaussureLoop.addEventListener('timeupdate', () => {
+        if (chaussureLoop.currentTime >= 10) {
+            chaussureLoop.currentTime = 0;
+            chaussureLoop.play();
+        }
+    });
+}
+
+// IDENTIDAD FRACTURADA (0:36 → 0:46)
+const identidadFracturadaLoop = document.getElementById('identidadfracturadaLoop');
+
+if (identidadFracturadaLoop) {
+    const startIF = 36;
+    const endIF = 46;
+
+    identidadFracturadaLoop.addEventListener('loadedmetadata', () => {
+        identidadFracturadaLoop.currentTime = startIF;
+    });
+
+    identidadFracturadaLoop.addEventListener('timeupdate', () => {
+        if (identidadFracturadaLoop.currentTime >= endIF) {
+            identidadFracturadaLoop.currentTime = startIF;
+            identidadFracturadaLoop.play();
+        }
+    });
+}
+
+// MUTANTE (0s → 10s)
+const mutanteLoop = document.getElementById('mutanteLoop');
+
+if (mutanteLoop) {
+    mutanteLoop.addEventListener('timeupdate', () => {
+        if (mutanteLoop.currentTime >= 10) {
+            mutanteLoop.currentTime = 0;
+            mutanteLoop.play();
+        }
+    });
+}
+
+// APARATO (0s → 10s)
+const aparatoLoop = document.getElementById('aparatoLoop');
+if (aparatoLoop) {
+    aparatoLoop.addEventListener('timeupdate', () => {
+        if (aparatoLoop.currentTime >= 10) {
+            aparatoLoop.currentTime = 0;
+            aparatoLoop.play();
+        }
+    });
+}
+
+// ME AGAINST (0s → 10s)
+const meAgainstLoop = document.getElementById('meagainstLoop');
+if (meAgainstLoop) {
+    meAgainstLoop.addEventListener('timeupdate', () => {
+        if (meAgainstLoop.currentTime >= 10) {
+            meAgainstLoop.currentTime = 0;
+            meAgainstLoop.play();
+        }
+    });
+}
+
+// GUESS (0s → 10s)
+const guessLoop = document.getElementById('guessLoop');
+if (guessLoop) {
+    guessLoop.addEventListener('timeupdate', () => {
+        if (guessLoop.currentTime >= 10) {
+            guessLoop.currentTime = 0;
+            guessLoop.play();
+        }
+    });
+}
+
+// QUE VAS HACER HOY (4s → 14s)
+const queVasAHacerHoyLoop = document.getElementById('quevashacerhoyLoop');
+
+if (queVasAHacerHoyLoop) {
+
+    // Forzar arranque en 4s
+    queVasAHacerHoyLoop.currentTime = 4;
+
+    queVasAHacerHoyLoop.addEventListener('timeupdate', () => {
+        if (queVasAHacerHoyLoop.currentTime >= 14) {
+            queVasAHacerHoyLoop.currentTime = 4;
+            queVasAHacerHoyLoop.play();
+        }
+    });
+}
+
+// KHE CALOR (0:03 → 0:13)
+const kheCalorLoop = document.getElementById('khecalorLoop');
+
+if (kheCalorLoop) {
+    const startKhe = 3;
+    const endKhe = 13;
+
+    kheCalorLoop.addEventListener('loadedmetadata', () => {
+        kheCalorLoop.currentTime = startKhe;
+    });
+
+    kheCalorLoop.addEventListener('timeupdate', () => {
+        if (kheCalorLoop.currentTime >= endKhe) {
+            kheCalorLoop.currentTime = startKhe;
+            kheCalorLoop.play();
+        }
+    });
+}
+
+// POCIMA (0s → 10s)
+const pocimaLoop = document.getElementById('pocimaLoop');
+if (pocimaLoop) {
+    pocimaLoop.addEventListener('timeupdate', () => {
+        if (pocimaLoop.currentTime >= 10) {
+            pocimaLoop.currentTime = 0;
+            pocimaLoop.play();
+        }
+    });
+}
+
+// MUESTRA (0s → 10s)
+const muestraLoop = document.getElementById('muestraLoop');
+if (muestraLoop) {
+    muestraLoop.addEventListener('timeupdate', () => {
+        if (muestraLoop.currentTime >= 10) {
+            muestraLoop.currentTime = 0;
+            muestraLoop.play();
+        }
+    });
+}
+
+// PSICOSIS (0s → 10s)
+const psicosisLoop = document.getElementById('psicosisLoop');
+if (psicosisLoop) {
+    psicosisLoop.addEventListener('timeupdate', () => {
+        if (psicosisLoop.currentTime >= 10) {
+            psicosisLoop.currentTime = 0;
+            psicosisLoop.play();
+        }
+    });
+}
+
+// MUERTE TODAS LAS TARDES (0s → 10s)
+const muerteTodasLasTardesLoop = document.getElementById('muertetodaslastardesLoop');
+
+if (muerteTodasLasTardesLoop) {
+    muerteTodasLasTardesLoop.addEventListener('timeupdate', () => {
+        if (muerteTodasLasTardesLoop.currentTime >= 10) {
+            muerteTodasLasTardesLoop.currentTime = 0;
+            muerteTodasLasTardesLoop.play();
+        }
+    });
+}
+
+
+</script>
+
+
+<script>
+function stopVideo(videoId, loopHash) {
+    const video = document.getElementById(videoId);
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+    window.location.hash = loopHash;
+}
+
+// Horizontales
+function closeTrisine() { stopVideo('trisineVideo', '#trisine-loop'); }
+function closeBerghain() { stopVideo('berghainVideo', '#berghain-loop'); }
+function closeSyntra() { stopVideo('syntraVideo', '#syntra-loop'); }
+function closeVuelveAMi() { stopVideo('vuelveamiVideo', '#vuelveami-loop'); }
+function closeSouthside() {
+    stopVideo('southsideVideo', '#southside-loop');
+}
+function closeTeQuieroIgual() {
+    stopVideo('tequieroigualVideo', '#tequieroigual-loop');
+}
+function closeMetnic() {
+    stopVideo('metnicVideo', '#metnic-loop');
+}
+
+function closeChaussure() {
+    stopVideo('chaussureVideo', '#chaussure-loop');
+}
+
+function closeIdentidadFracturada() {
+    stopVideo('identidadfracturadaVideo', '#identidadfracturada-loop');
+}
+
+function closeMutante() {
+    stopVideo('mutanteVideo', '#mutante-loop');
+}
+
+function closeAparato() {
+    stopVideo('aparatoVideo', '#aparato-loop');
+}
+
+function closeMeAgainst() {
+    stopVideo('meagainstVideo', '#meagainst-loop');
+}
+
+function closeGuess() {
+    stopVideo('guessVideo', '#guess-loop');
+}
+
+function closeQueVasAHacerHoy() {
+    stopVideo('quevashacerhoyVideo', '#quevashacerhoy-loop');
+}
+
+function closeKheCalor() {
+    stopVideo('khecalorVideo', '#khecalor-loop');
+}
+
+function closePocima() {
+    stopVideo('pocimaVideo', '#pocima-loop');
+}
+
+function closeMuestra() {
+    stopVideo('muestraVideo', '#muestra-loop');
+}
+
+function closePsicosis() {
+    stopVideo('psicosisVideo', '#psicosis-loop');
+}
+
+function closeMuerteTodasLasTardes() {
+    stopVideo('muertetodaslastardesVideo', '#muertetodaslastardes-loop');
+}
+
+
+// Verticales
+function closeWork() { stopVideo('workVideo', '#work-loop'); }
+function closeLondon() { stopVideo('londonVideo', '#london-loop'); }
+function closeChopa() { stopVideo('chopaVideo', '#chopa-loop'); }
+function closeRalphLauren() { stopVideo('ralphlaurenVideo', '#ralphlauren-loop'); }
+function close47() { stopVideo('47Video', '#47-loop'); }
+function closeBananaBlonde() { stopVideo('bananablondeVideo', '#bananablonde-loop'); }
+function closeInvasores() { stopVideo('invasoresVideo', '#invasores-loop'); }
+function closeLaCasa() { stopVideo('lacasaVideo', '#lacasa-loop'); }
+function closeDani() { stopVideo('daniVideo', '#dani-loop'); }
+function closeInvasión() {
+    stopVideo('invasiónVideo', '#invasión-loop');
+}
+
+
+</script>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+
+    if (entry.isIntersecting) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, {
+  threshold: 0.4
+});
+
+document.querySelectorAll(
+  '.portfolio-video, .vertical-video, .hero-video'
+).forEach(video => {
+  observer.observe(video);
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach(video => {
+      video.muted = true;
+      video.volume = 0;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+    });
+  });
+</script>
+
+<script>
+function handleModalVideos() {
+    const modals = document.querySelectorAll('.modal');
+
+    modals.forEach(modal => {
+        const video = modal.querySelector('video');
+        if (!video) return;
+
+        if (modal.matches(':target')) {
+            video.muted = false;
+            video.volume = 1;
+            video.currentTime = 0;
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+            video.currentTime = 0;
+            video.muted = true;
+        }
+    });
+}
+
+window.addEventListener('hashchange', handleModalVideos);
+window.addEventListener('load', handleModalVideos);
+</script>
+
+
+</body>
+</html>
