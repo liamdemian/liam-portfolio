@@ -1368,52 +1368,8 @@ a {
 <footer>
     © 2026 Liam Demian
 </footer>
-<script>
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 50);
-});
-</script>
-
-<script>
-function closeTrisine() {
-    const video = document.getElementById('trisineVideo');
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-    window.location.hash = '#trisine-loop';
-}
-</script>
-
-<script>
-function closeBerghain() {
-    const video = document.getElementById('berghainVideo');
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-
-    // volver al loop de BERGHAIN
-    window.location.hash = '#berghain-loop';
-}
-
-function closeSyntra() {
-    const video = document.getElementById('syntraVideo');
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-    window.location.hash = '#syntra-loop';
-}
 
 
-</script>
 
 
 <div id="trisine" class="modal" onclick="closeTrisine()">
@@ -1693,51 +1649,12 @@ function closeSyntra() {
 </div>
 
 
-<script>
-const berghainLoop = document.getElementById('berghainLoop');
-
-if (berghainLoop) {
-    berghainLoop.addEventListener('timeupdate', () => {
-        if (berghainLoop.currentTime >= 6) {
-            berghainLoop.currentTime = 0;
-            berghainLoop.play();
-        }
-    });
-}
-</script>
-
-<script>
-const syntraLoop = document.getElementById('syntraLoop');
-
-if (syntraLoop) {
-    syntraLoop.addEventListener('timeupdate', () => {
-        if (syntraLoop.currentTime >= 10) {
-            syntraLoop.currentTime = 0;
-            syntraLoop.play();
-        }
-    });
-}
-</script>
 
 
-<script>
-const verticalLoops = [
-    document.getElementById('workLoop'),
-    document.getElementById('londonLoop'),
-    document.getElementById('chopaLoop')
-];
 
-verticalLoops.forEach(video => {
-    if (!video) return;
 
-    video.addEventListener('timeupdate', () => {
-        if (video.currentTime >= 10) {
-            video.currentTime = 0;
-            video.play();
-        }
-    });
-});
-</script>
+
+
 
 <script>
 // ===== LOOPS VERTICALES EXTRA =====
@@ -1876,7 +1793,7 @@ if (daniLoop) {
 }
 
 // INVASIÓN (0s → 10s)
-const invasionLoop = document.getElementById('invasionLoop');
+const invasiónLoop = document.getElementById('invasiónLoop');
 
 if (invasionLoop) {
     invasionLoop.addEventListener('timeupdate', () => {
@@ -2197,30 +2114,7 @@ document.querySelectorAll(
   });
 </script>
 
-<script>
-function handleModalVideos() {
-    const modals = document.querySelectorAll('.modal');
 
-    modals.forEach(modal => {
-        const video = modal.querySelector('video');
-        if (!video) return;
-
-        if (modal.matches(':target')) {
-            video.muted = false;
-            video.volume = 1;
-            video.currentTime = 0;
-            video.play().catch(() => {});
-        } else {
-            video.pause();
-            video.currentTime = 0;
-            video.muted = true;
-        }
-    });
-}
-
-window.addEventListener('hashchange', handleModalVideos);
-window.addEventListener('load', handleModalVideos);
-</script>
 
     
 
