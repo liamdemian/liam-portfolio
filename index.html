@@ -1380,14 +1380,13 @@ window.addEventListener('load', () => {
 });
 </script>
 
+<script>
 function closeTrisine() {
     const video = document.getElementById('trisineVideo');
     if (video) {
         video.pause();
         video.currentTime = 0;
     }
-
-    // volver al loop de TRISINE
     window.location.hash = '#trisine-loop';
 }
 </script>
@@ -2218,6 +2217,11 @@ window.addEventListener('hashchange', handleModalVideos);
 window.addEventListener('load', handleModalVideos);
 </script>
 
+<script>
+function closeVuelveAMi() {
+  window.location.hash = '#vuelveami-loop';
+}
+</script>    
 
 </body>
 </html>
